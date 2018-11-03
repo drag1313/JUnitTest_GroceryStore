@@ -1,9 +1,6 @@
 package Terminal;
 
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,14 +9,20 @@ class TerminalTest {
 
     private Terminal t;
 
-    @Test
-    public void calculate1() {
+    @Before
+    public void setUp() {
         t = new Terminal();
         t.setPrice("Молоко", 70);
         t.setPrice("Шампунь", 200);
         t.setPrice("Чипсы", 40);
         t.setPrice("Шоколад", 50);
         t.setPrice("Кола", 89);
+
+    }
+
+    @Test
+    public void calculate1() {
+        setUp();
         t.purchase("Молоко");
         t.purchase("Шампунь");
         t.purchase("Чипсы");
@@ -31,14 +34,10 @@ class TerminalTest {
         assertEquals(608, t.calculate());
     }
 
+
     @Test
     public void calculste2() {
-        t = new Terminal();
-        t.setPrice("Молоко", 70);
-        t.setPrice("Шампунь", 200);
-        t.setPrice("Чипсы", 40);
-        t.setPrice("Шоколад", 50);
-        t.setPrice("Кола", 89);
+        setUp();
         t.purchase("Чипсы");
         t.purchase("Чипсы");
         t.purchase("Чипсы");
@@ -49,12 +48,7 @@ class TerminalTest {
 
     @Test
     public void calculate3() {
-        t = new Terminal();
-        t.setPrice("Молоко", 70);
-        t.setPrice("Шампунь", 200);
-        t.setPrice("Чипсы", 40);
-        t.setPrice("Шоколад", 50);
-        t.setPrice("Кола", 89);
+        setUp();
         t.purchase("Молоко");
         t.purchase("Шампунь");
         t.purchase("Чипсы");
